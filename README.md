@@ -2,6 +2,7 @@
 
 By default, the UITextField onscreen keyboard does not hide itself. It is the programmer's responsibility to write the logic of keyboard hiding. 
 It would be convenient to hide the keyboard automatically when the user has finished entering data and is no longer active.
+
 This code tracks changes in the text field by starting a timer each time the user enters a new character. If no new characters are entered for a period of time, the keyboard hides. You can customise the waiting time for your project.
 
 ### Code
@@ -127,7 +128,7 @@ final class ViewController: UIViewController {
 }
 ```
 
-
+[Download Demonstration Project](https://github.com/Konst-Is/HideKeyboardAutomatically.git) 
 
 
 
