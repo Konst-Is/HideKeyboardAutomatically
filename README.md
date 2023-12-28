@@ -5,6 +5,9 @@ It would be convenient to hide the keyboard automatically when the user has fini
 
 This code tracks changes in the text field by starting a timer each time the user enters a new character. If no new characters are entered for a period of time, the keyboard hides. You can customise the waiting time for your project.
 
+https://im2.ezgif.com/tmp/ezgif-2-eea7b2730c.gif![image](https://github.com/Konst-Is/HideKeyboardAutomatically/assets/125888284/e67ee0b3-8209-4215-8a04-834ec19ce354)
+
+
 ### Code
 
 ```swift
