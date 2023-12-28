@@ -53,3 +53,9 @@ final class ViewController: UIViewController {
     }
 }
 ```
+
+[Demonstration Project](https://github.com/Konst-Is/HideKeyboardAutomatically.git) 
+
+
+
+
