@@ -5,7 +5,7 @@ It would be convenient to hide the keyboard automatically when the user has fini
 
 This code tracks changes in the text field by starting a timer each time the user enters a new character. If no new characters are entered for a period of time, the keyboard hides. You can customise the waiting time for your project.
 
-[![Demonstration]([https://im2.ezgif.com/tmp/ezgif-2-eea7b2730c.gif](https://im2.ezgif.com/tmp/ezgif-2-202bea82ec.gif)) 
+[![Demonstration](https://im2.ezgif.com/tmp/ezgif-2-202bea82ec.gif)
 
 ### Code
 
