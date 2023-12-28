@@ -1,6 +1,6 @@
-# Implementation of automatic hiding of UITextField keyboard in UIKit
+# How to hide the onscreen keyboard automatically on UITextField UIKit
 
-By default, the UITextField popup keyboard does not hide itself. It is the programmer's responsibility to write the logic of keyboard hiding. 
+By default, the UITextField onscreen keyboard does not hide itself. It is the programmer's responsibility to write the logic of keyboard hiding. 
 It would be convenient to hide the keyboard automatically when the user has finished entering data and is no longer active.
 This code tracks changes in the text field by starting a timer each time the user enters a new character. If no new characters are entered for a period of time, the keyboard hides. You can customise the waiting time for your project.
 
