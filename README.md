@@ -14,7 +14,6 @@ final class ViewController: UIViewController {
 
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var scrollView: UIScrollView!
 
     var editingNotifications: [Notification] = []
     weak var timer: Timer?
