@@ -63,7 +63,70 @@ final class ViewController: UIViewController {
 }
 ```
 
-[Demonstration Project](https://github.com/Konst-Is/HideKeyboardAutomatically.git) 
+[Download Demonstration Project](https://github.com/Konst-Is/HideKeyboardAutomatically.git) 
+
+## How to rise UITextField when keyboard appears
+
+
+### Code
+
+```swift
+import UIKit
+
+final class ViewController: UIViewController {
+
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        subscribeToNotifications()
+    }
+
+    deinit {
+        unsubscribeToNotifications()
+    }
+
+    func subscribeToNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+
+    func unsubscribeToNotifications() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+
+    @objc
+    func keyboardWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let kbFrameSize = (userInfo?["UIKeyboardFrameEndUserInfoKey"] as! NSValue).cgRectValue
+        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
+    }
+
+    @objc
+    func keyboardWillHide() {
+        scrollView.contentOffset = CGPoint.zero
+    }
+
+    @IBAction func hideKeyboardButtonTap(_ sender: UIButton) {
+        topTextField.resignFirstResponder()
+        bottomTextField.resignFirstResponder()
+    }
+}
+```
+
 
 
 
