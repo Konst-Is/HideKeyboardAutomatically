@@ -30,7 +30,8 @@ final class ViewController: UIViewController {
     func subscribeToNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handleTextDidChange),
-                                               name: UITextField.textDidChangeNotification, object: nil)
+                                               name: UITextField.textDidChangeNotification,
+                                               object: nil)
     }
     
     func unsubscribeFromNotifications() {
@@ -41,15 +42,17 @@ final class ViewController: UIViewController {
     
     /// Handle a click on the UITextField onscreen keyboard button.
     ///
-    /// Each time a keyboard button is pressed and a textDidChangeNotification notification is received,
-    /// the timer is stopped if it was started, and the timer is started again, which calls the hideKeyboard() method via timeInterval.
+    /// Each time a keyboard button is pressed and a textDidChangeNotification notification 
+    /// is received, the timer is stopped if it was started, and the timer is started again,
+    /// which calls the hideKeyboard() method via timeInterval.
     @objc
     func handleTextDidChange() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 2.0,
                                      target: self,
                                      selector: #selector(hideKeyboard),
-                                     userInfo: nil, repeats: false)
+                                     userInfo: nil,
+                                     repeats: false)
     }
     
     /// Hide the UITextField onscreen keyboard
