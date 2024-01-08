@@ -65,8 +65,6 @@ final class ViewController: UIViewController {
 }
 ```
 
-[Download Demonstration Project](https://github.com/Konst-Is/HideKeyboardAutomatically.git) 
-
 ## How to rise UITextField when keyboard appears
 
 When the onscreen keyboard appears on the screen, it can obscure the text field and other elements on the screen. To solve this problem, place a UIScrollView on the screen and place text fields and other UI-elements on it. 
@@ -131,7 +129,6 @@ final class ViewController: UIViewController {
 }
 ```
 
-[Download Demonstration Project](https://github.com/Konst-Is/HideKeyboardAutomatically.git) 
 
 
 
