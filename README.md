@@ -10,58 +10,46 @@ This code tracks changes in the text field by starting a timer each time the use
 ### Code
 
 ```swift
-import UIKit
-
 final class ViewController: UIViewController {
 
-    @IBOutlet weak var topTextField: UITextField!
-    @IBOutlet weak var bottomTextField: UITextField!
-
-    var editingNotifications: [Notification] = []
-    weak var timer: Timer?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        subscribeToNotifications()
-    }
-
-    deinit {
-        unsubscribeToNotifications()
-    }
-
-    func subscribeToNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(trackEditing),
-                                               name: UITextField.textDidChangeNotification,
-                                               object: nil)
-    }
-
-    func unsubscribeToNotifications() {
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UITextField.textDidChangeNotification,
-                                                  object: nil)
-    }
-
-    @objc
-    func trackEditing(_ notification: Notification) {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self,
-                                     selector: #selector(hideKeyboard),
-                                     userInfo: nil,
-                                     repeats: true)
-        editingNotifications.append(notification)
-    }
-
-    @objc
-    func hideKeyboard() {
-        if editingNotifications.isEmpty {
-            view.endEditing(true)
-            timer?.invalidate()
-        } else {
-            editingNotifications = []
-        }
-    }
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    weak var timer: Timer?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        subscribeToNotifications()
+    }
+    
+    deinit {
+        unsubscribeFromNotifications()
+    }
+    
+    func subscribeToNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTextDidChange), name: UITextField.textDidChangeNotification, object: nil)
+    }
+    
+    func unsubscribeFromNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification , object: nil)
+    }
+    
+    /// Handle a click on the UITextField onscreen keyboard button.
+    ///
+    /// Each time a keyboard button is pressed and a textDidChangeNotification notification is received, the timer is stopped if it was started, and the timer is started again, which calls the hideKeyboard() method via timeInterval.
+    @objc
+    func handleTextDidChange() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(hideKeyboard), userInfo: nil, repeats: false)
+    }
+    
+    /// Hide the UITextField onscreen keyboard
+    @objc
+    func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
 ```
 
